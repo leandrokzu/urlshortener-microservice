@@ -25,12 +25,12 @@ const shortUrls = [];
 
 app.post('/api/shorturl', function (req, res) {
   const { url } = req.body;
-  // const urlRegex =
-  //   /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([/\w .-]*)*\/?$/i;
+  const urlRegex =
+    /^(https?:\/\/)(www\.)?[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}([/a-zA-Z0-9 .-]*)*\/?$/;
 
-  // if (!urlRegex.test(url)) {
-  //   res.json({ error: 'invalid url' });
-  // }
+  if (!urlRegex.test(url)) {
+    res.json({ error: 'invalid url' });
+  }
   if (originalUrls.includes(url)) {
     res.json({
       original_url: url,
