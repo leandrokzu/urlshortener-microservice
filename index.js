@@ -25,7 +25,8 @@ const shortUrls = [];
 
 app.post('/api/shorturl', function (req, res) {
   const { url } = req.body;
-  const urlRegex = /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([/\w .-]*)*\/?$/;
+  const urlRegex =
+    /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([/\w .-]*)*\/?$/i;
 
   if (!urlRegex.test(url)) {
     res.json({ error: 'invalid url' });
